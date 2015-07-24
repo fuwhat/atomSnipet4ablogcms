@@ -21,7 +21,7 @@ ATOMエディタ用 a-blog cmsのスニペットです。
 * zcels（Category_EntryList）
 * zcesm（Category_EntrySummary）
 
-###　パーツ系スニペット
+### パーツ系スニペット
 
 * zplk（Links）
 * zpbn（Banner）
