@@ -1,0 +1,264 @@
+# Your snippets
+#
+# Atom snippets allow you to enter a simple prefix in the editor and hit tab to
+# expand the prefix into a larger code block with templated values.
+#
+# You can create a new snippet in this file by typing "snip" and then hitting
+# tab.
+#
+# An example CoffeeScript snippet to expand log to console.log:
+#
+# '.source.coffee':
+#   'Console log':
+#     'prefix': 'log'
+#     'body': 'console.log $1'
+#
+# This file uses CoffeeScript Object Notation (CSON).
+# If you are unfamiliar with CSON, you can read more about it here:
+# https://github.com/bevry/cson#what-is-cson
+
+'.text.html.basic':
+  'Entry_List':
+    'prefix': 'zels'
+    'body': """<!-- BEGIN_MODULE Entry_List id="${1:}"-->
+<div${2:}>
+<!--#include file="/admin/module/setting.html"-->
+<ul${3:}>
+	<!-- BEGIN entry:loop -->
+	<li${4:}><a href="{url}"${5:}>{title}</a></li>
+	<!-- END entry:loop -->
+</ul>
+</div>
+<!-- END_MODULE Entry_List -->
+${6:}
+"""
+
+  'Entry_Summary':
+    'prefix': 'zesm'
+    'body': """<!-- BEGIN_MODULE Entry_Summary id="${1:}" -->
+    <!-- BEGIN Entry_Summary:veil -->
+    <section class="moduleSection">
+    <!--#include file="/admin/module/setting.html"-->
+    <div class="moduleHeader clearfix">
+    	<h2 class="moduleHeading">%{CATEGORY_NAME}</h2>
+    </div>
+    <ul class="summaryDefault">
+
+    	<!-- BEGIN unit:loop -->
+    	<!-- BEGIN entry:loop -->
+    	<li class="summaryDefaultEntry js-autoheight-r js-biggerlink">
+    		<div class="acms-summary">
+    			<div class="summaryDefaultEntryImageWrap acms-summary-image">
+    				<div style="width:{x}px; height:{y}px; overflow:hidden; position:relative;"><!-- BEGIN image:veil -->
+    					<img src="%{ROOT_DIR}{path}" width="{imgX}" height="{imgY}" style="left:{left}px; top:{top}px; position:relative;" /><!-- END image:veil --><!-- BEGIN noimage -->
+    					noimage
+    					<!-- END noimage -->
+    				</div>
+    			</div>
+    			<div class="acms-summary-body">
+    				<p class="summaryTitle acms-summary-heading"><a href="{url}">{title}</a></p>
+    				<p class="summaryDetail">{summary}[trim(80, '...')]</p>
+    			</div>
+    		</div>
+    	</li><!-- END entry:loop -->
+    	<hr class="clearHidden" /><!-- END unit:loop -->
+
+    </ul>
+
+    	<!-- BEGIN pager:veil -->
+    <!-- ページ送り　開始▼▼ -->
+    <div class="acms-pager-container">
+    <ul class="pager">
+    	<!-- BEGIN backLink --><li><a href="{url}" aria-label="前へ" class="pagerLink"><span aria-hidden="true">&laquo;</span></a></li><!-- END backLink -->
+    	<!-- BEGIN firstPage:veil --><li {pageCurAttr}[raw]><span><a href="{firstPageUrl}" class="pagerLink">{firstPage}</a></span></li><li>…</li><!-- END firstPage:veil -->
+    	<!-- BEGIN page:loop --><li{pageCurAttr}[raw]><span><!-- BEGIN link#front --><a href="{url}" class="pagerLink"><!-- END link#front -->{page}<!-- BEGIN link#rear --></a><!-- END link#rear --><!-- BEGIN glue --><!-- END glue --></span></li><!-- END page:loop -->
+    	<!-- BEGIN lastPage:veil --><li>…</li><li{pageCurAttr}[raw]><span><a href="{lastPageUrl}" class="pagerLink">{lastPage}</a></span></li><!-- END lastPage:veil -->
+    	<!-- BEGIN forwardLink --><li><a href="{url}" aria-label="次へ" class="pagerLink"><span aria-hidden="true">&raquo;</span></a></li><!-- END forwardLink -->
+    </ul>
+    </div>
+    <!-- ページ送り　終了▲▲ -->
+    	<!-- END pager:veil -->
+    </section>
+    <!-- END Entry_Summary:veil -->
+    <!-- END_MODULE Entry_Summary -->
+${2:}
+"""
+
+  'Entry_Photo':
+    'prefix': 'zeph'
+    'body': """<!-- BEGIN_MODULE Entry_Photo id="${1:}"-->
+<div${2:}>
+<!--#include file="/admin/module/setting.html"-->
+<!-- BEGIN notFound -->
+<p${3:}>エントリーが見つかりませんでした。</p>
+<!-- END notFound -->
+
+<ul${4:}><!-- BEGIN unit:loop -->
+	<!-- BEGIN entry:loop -->
+	<li${5:}>
+		<div style="width:{x}px; height:{y}px; overflow:hidden; position:relative;"><!-- BEGIN image:veil -->
+		<img src="%{ROOT_DIR}{path}" width="{imgX}" height="{imgY}" alt="" style="left:{left}px; top:{top}px; position:relative;" /><!-- END image:veil -->
+		</div>
+		<p${6:}><a href="{url}"${7:}>{title}</a></p>
+	</li><!-- END entry:loop -->
+	<!-- END unit:loop -->
+</ul>
+</div>
+<!-- END_MODULE Entry_Photo -->
+${8:}
+"""
+
+  'Entry_Headline':
+    'prefix': 'zehl'
+    'body': """<!-- BEGIN_MODULE Entry_Headline id="${1:}"-->
+<div${2:}>
+<!--#include file="/admin/module/setting.html"-->
+<a href="{indexUrl}">一覧へ</a>
+<a href="{indexUrl}rss2.xml">rss</a>
+<ul${3:}><!-- BEGIN entry:loop -->
+	<li${4:}><!-- BEGIN url#front --><a href="{url}"${5:}><!-- END url#front -->{title}<!-- BEGIN url#rear --></a><!-- END url#rear --><!-- BEGIN category:veil --> 【{categoryName}】<!-- END category:veil -->{date#Y}年{date#m}月{date#d}日( {date#week} ) {date#h}時{date#i}分{date#s}秒 <!-- BEGIN new -->New!<!-- END new --></li><!-- END entry:loop -->
+</ul>
+
+<!-- BEGIN pager:veil -->
+<p>
+	全 {itemsAmount} 件中 {itemsFrom} 〜 {itemsTo} 件目を表示
+	<!-- BEGIN firstPage:veil --><a href="{firstPageUrl}">{firstPage}</a><!-- END firstPage:veil -->
+	<!-- BEGIN page:loop --><!-- BEGIN link#front --><a href="{url}"><!-- END link#front -->{page}<!-- BEGIN link#rear --></a><!-- END link#rear --><!-- BEGIN glue -->, <!-- END glue --><!-- END page:loop -->
+	<!-- BEGIN lastPage:veil --> ...<a href="{lastPageUrl}">{lastPage}</a><!-- END lastPage:veil -->
+</p>
+<p>
+	<!-- BEGIN backLink --><a href="{url}">« 前の{backNum}件</a><!-- END backLink -->
+	<!-- BEGIN forwardLink --><a href="{url}">次の{forwardNum}件 »</a><!-- END forwardLink -->
+</p>
+<!-- END pager:veil -->
+</div>
+<!-- END_MODULE Entry_Headline -->
+${6:}
+"""
+
+  'Entry_Body':
+    'prefix': 'zebd'
+    'body': """<!-- BEGIN_MODULE Entry_Body id="${1:}"-->
+<div${2:}>
+<!--#include file="/admin/module/setting.html"-->
+<!-- BEGIN notFound -->
+<p>お探しのエントリーは見つかりませんでした。</p>
+<!-- END notFound -->
+
+<!-- BEGIN serialNavi:veil -->
+<ul>
+	<li>
+		<!-- BEGIN prevNotFound -->prev not found<!-- END prevNotFound -->
+		<!-- BEGIN prevLink -->
+		<a href="{url}"><< {name}[trim(27, '...')|escape]</a>
+		<!-- END prevLink -->
+		&nbsp;</li>
+	<li><a href="{upperUrl}">一覧へ</a></li>
+	<li>&nbsp;
+		<!-- BEGIN nextNotFound -->next not found<!-- END nextNotFound -->
+		<!-- BEGIN nextLink -->
+		<a href="{url}">{name}[trim(27, '...')|escape] >> </a>
+		<!-- END nextLink -->
+	</li>
+</ul>
+<!-- END serialNavi:veil -->
+
+<!-- BEGIN entry:loop -->
+<!--#include file="/admin/entry/revision-info.html"-->
+
+<div>
+	<!-- BEGIN date:veil -->
+	<p>{date#Y}.{date#m}.{date#d}</p>
+	<!-- END date:veil --><!-- BEGIN new:touch -->
+	<p>新着</p>
+	<!-- END new:touch -->
+</div>
+<div>
+	<!--#include file="/admin/entry/title.html"-->
+	<!-- BEGIN title:veil -->
+	<div>
+		<h2><a href="{titleUrl}">{title}[raw]</a></h2>
+		<!-- BEGIN category:veil -->
+		<p>カテゴリー：
+			<!-- BEGIN category:loop -->
+			<span><a href="{url}">{name}</a></span>
+			<!-- BEGIN glue -->
+			<
+			<!-- END glue -->
+			<!-- END category:loop -->
+			</p>
+		<!-- END category:veil -->
+	</div>
+	<!-- END title:veil -->
+	<div>
+		<!-- BEGIN unit:veil -->
+		<!--#include file="/include/unit.html"-->
+		<hr />
+		<!-- END unit:veil -->
+		<!-- BEGIN continueLink:veil -->
+		<p><a href="{continueUrl}">「{continueName}」の続きを読む</a></p>
+		<!-- END continueLink:veil -->
+
+		<!-- BEGIN formBody -->
+		<!--#include file="/include/form/unit.html"-->
+		<hr />
+		<!-- END formBody -->
+
+		<!-- BEGIN adminEntryEdit -->
+		<!--#include file="/admin/entry/edit.html"-->
+		<!--#include file="/admin/entry/add.html"-->
+		<!-- END adminEntryEdit -->
+
+		<!-- BEGIN adminFormEdit -->
+		<!--#include file="/admin/form2/edit.html"-->
+		<!-- END adminFormEdit -->
+
+		<!-- BEGIN tag:veil -->
+		<p>関連タグ：<!-- BEGIN tag:loop --><a href="{url}">{name}</a> <!-- END tag:loop --></p>
+		<!-- END tag:veil -->
+
+		<!--#include file="/admin/entry/action.html"-->
+	</div>
+	<!-- BEGIN footer:veil -->
+	<div>
+		<p>Posted by {posterName} at {date#H}:{date#i}  <a href="{inheritUrl}#permalink">パーマリンク</a>
+			<!-- BEGIN commentAmount -->
+			<a href="{commentUrl}#comment">コメント ( {commentAmount} )</a>
+			<!-- END commentAmount -->
+		</p>
+	</div>
+	<!-- END footer:veil -->
+</div>
+<!-- END entry:loop -->
+
+<!-- BEGIN pager:veil -->
+<p>
+	全 {itemsAmount} 件中 {itemsFrom} 〜 {itemsTo} 件目を表示
+	<!-- BEGIN firstPage:veil --><a href="{firstPageUrl}">{firstPage}</a><!-- END firstPage:veil -->
+	<!-- BEGIN page:loop --><!-- BEGIN link#front --><a href="{url}"><!-- END link#front -->{page}<!-- BEGIN link#rear --></a><!-- END link#rear --><!-- BEGIN glue -->, <!-- END glue --><!-- END page:loop -->
+	<!-- BEGIN lastPage:veil --> ...<a href="{lastPageUrl}">{lastPage}</a><!-- END lastPage:veil -->
+</p>
+<p>
+	<!-- BEGIN backLink --><a href="{url}">« 前の{backNum}件</a><!-- END backLink -->
+	<!-- BEGIN forwardLink --><a href="{url}">次の{forwardNum}件 »</a><!-- END forwardLink -->
+</p>
+<!-- END pager:veil -->
+
+
+<!-- BEGIN micropager -->
+<p>
+	全 {itemsAmount} 件中 {itemsFrom} 〜 {itemsTo} 件目を表示
+	<!-- BEGIN page:loop --><!-- BEGIN link#front --><a href="{url}"><!-- END link#front -->{page}<!-- BEGIN link#rear --></a><!-- END link#rear --><!-- BEGIN glue -->, <!-- END glue --><!-- END page:loop -->
+	<!-- BEGIN lastPage:veil --> ...<a href="{lastPageUrl}">{lastPage}</a><!-- END lastPage:veil -->
+</p>
+<p>
+	<!-- BEGIN backLink --><a href="{url}">« 前の{backNum}件</a><!-- END backLink -->
+	<!-- BEGIN forwardLink --><a href="{url}">次の{forwardNum}件 »</a><!-- END forwardLink -->
+</p><!-- END micropager -->
+
+<!-- BEGIN micropage:veil --><!-- BEGIN micropageLink -->
+<p><a href="{url}">{label}</a></p><!-- END micropageLink --><!-- END micropage:veil -->
+</div>
+<!-- END_MODULE Entry_Body -->
+${3:}
+"""
