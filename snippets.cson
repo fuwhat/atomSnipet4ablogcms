@@ -297,6 +297,7 @@ ${6:}
 ${8:}
 """
 
+
   'Category_EntrySummary':
     'prefix': 'zcesm'
     'body': """<!-- BEGIN_MODULE Category_EntrySummary id="${1:}"-->
