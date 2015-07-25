@@ -433,3 +433,45 @@ ${2:}
     <!-- END serialNavi:veil -->
 ${4:}
 """
+
+  'Touch_Top':
+    'prefix': 'zttp'
+    'body': """<!-- BEGIN_MODULE Touch_Top -->
+${1:}
+<!-- END_MODULE Touch_Top -->
+"""
+
+  'Touch_Index':
+    'prefix': 'ztix'
+    'body': """<!-- BEGIN_MODULE Touch_Index -->
+${1:}
+<!-- END_MODULE Touch_Index -->
+"""
+
+  'Touch_Entry':
+    'prefix': 'zten'
+    'body': """<!-- BEGIN_MODULE Touch_Entry -->
+${1:}
+<!-- END_MODULE Touch_Entry -->
+"""
+
+  'Touch_Admin':
+    'prefix': 'ztad'
+    'body': """<!-- BEGIN_MODULE Touch_Admin -->
+${1:}
+<!-- END_MODULE Touch_Admin -->
+"""
+
+  'Touch_Login':
+    'prefix': 'ztlo'
+    'body': """<!-- BEGIN_MODULE Touch_Login -->
+${1:}
+<!-- END_MODULE Touch_Login -->
+"""
+
+  'Touch_Edit':
+    'prefix': 'zted'
+    'body': """<!-- BEGIN_MODULE Touch_Edit -->
+${1:}
+<!-- END_MODULE Touch_Edit -->
+"""
