@@ -39,3 +39,12 @@ ATOMエディタ用 a-blog cmsのスニペットです。
 * zpnv（Navigation）
 * zptp（Topicpath）
 * zpgr（pager）
+
+### タッチモジュール
+
+* zttp（Touch_Top）
+* ztix（Touch_Index）
+* zten（Touch_Entry）
+* ztad（Touch_Admin）
+* ztlo（Touch_Login）
+* zted（Touch_Edit）
